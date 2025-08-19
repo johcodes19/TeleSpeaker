@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleSpeaker™ | Empire Domination - Master Your Performance</title>
+    <meta name="description" content="Professional teleprompter audio system by Empire Domination. Dominate your presentations, auditions, and content creation.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>👑</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">T</div>
+                <div class="brand-name">
+                    <div class="app-name">TELESPEAKER</div>
+                    <div class="company-name">Empire Domination</div>
+                </div>
+            </div>
+            <div class="pro-badge">PRO VERSION</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-card">
+            <!-- Tagline -->
+            <div class="tagline">
+                <h2>DOMINATE YOUR PERFORMANCE</h2>
+                <p>Professional teleprompter audio system for actors, presenters, and content creators who refuse to settle for mediocrity. When you choose Empire Domination, you choose to win.</p>
+            </div>
+
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="tts"><span>Browser TTS</span></button>
+                <button class="mode-btn" data-mode="manual"><span>Manual Timer</span></button>
+                <button class="mode-btn" data-mode="api"><span>Premium APIs</span></button>
+            </div>
+
+            <!-- Browser TTS Section -->
+            <div id="ttsSection">
+                <div id="ttsStatus" class="status-card status-info hidden">
+                    Initializing TeleSpeaker audio engine...
+                </div>
+            </div>
+
+            <!-- Manual Timer Section -->
+            <div id="manualSection" class="hidden">
+                <div class="status-card status-info">
+                    <strong>PRECISION MODE:</strong> Visual countdown timer for perfect timing control. Master your delivery with military precision.
+                </div>
+            </div>
+
+            <!-- External API Section -->
+            <div id="apiSection" class="hidden">
+                <div class="api-config">
+                    <h3>⚡ Premium Voice Services</h3>
+                    
+                    <div class="service-tabs">
+                        <button class="service-tab active" data-service="elevenlabs">ElevenLabs</button>
+                        <button class="service-tab" data-service="openai">OpenAI</button>
+                        <button class="service-tab" data-service="google">Google Cloud</button>
+                        <button class="service-tab" data-service="azure">Azure Speech</button>
+                    </div>
+
+                    <!-- ElevenLabs Configuration -->
+                    <div class="service-content active" id="elevenlabs-config">
+                        <div class="status-card status-warning">
+                            <strong>ELEVENLABS PREMIUM:</strong> Industry-leading AI voices. 10,000 free characters/month.
+                            <a href="https://elevenlabs.io" target="_blank" class="api-link">GET API KEY →</a>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>API Key</label>
+                            <input type="password" id="elevenlabs-key" placeholder="Your ElevenLabs API key">
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>Premium Voice</label>
+                            <select id="elevenlabs-voice">
+                                <option value="21m00Tcm4TlvDq8ikWAM">Rachel (American, Female)</option>
+                                <option value="AZnzlk1XvdvUeBnXmlld">Domi (British, Female)</option>
+                                <option value="EXAVITQu4vr4xnSDxMaL">Bella (American, Female)</option>
+                                <option value="ErXwobaYiN019PkySvjV">Antoni (American, Male)</option>
+                                <option value="VR6AewLTigWG4xSOukaG">Arnold (American, Male)</option>
+                                <option value="pNInz6obpgDQGcFmaJgB">Adam (American, Male)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>AI Model</label>
+                            <select id="elevenlabs-model">
+                                <option value="eleven_turbo_v2">Turbo v2 (Fastest)</option>
+                                <option value="eleven_monolingual_v1">English v1 (Optimized)</option>
+                                <option value="eleven_multilingual_v2">Multilingual v2 (Premium)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="test-btn" id="testElevenlabs">TEST VOICE</button>
+                    </div>
+
+                    <!-- OpenAI Configuration -->
+                    <div class="service-content" id="openai-config">
+                        <div class="status-card status-warning">
+                            <strong>OPENAI TTS:</strong> Neural voices from GPT creators.
+                            <a href="https://platform.openai.com/api-keys" target="_blank" class="api-link">GET API KEY →</a>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>API Key</label>
+                            <input type="password" id="openai-key" placeholder="Your OpenAI API key">
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>Neural Voice</label>
+                            <select id="openai-voice">
+                                <option value="nova">Nova (Premium Female)</option>
+                                <option value="alloy">Alloy (Neutral)</option>
+                                <option value="echo">Echo (Male)</option>
+                                <option value="fable">Fable (British Male)</option>
+                                <option value="onyx">Onyx (Deep Male)</option>
+                                <option value="shimmer">Shimmer (Female)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>Quality</label>
+                            <select id="openai-model">
+                                <option value="tts-1-hd">TTS-1-HD (Maximum Quality)</option>
+                                <option value="tts-1">TTS-1 (Fast)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="test-btn" id="testOpenai">TEST VOICE</button>
+                    </div>
+
+                    <!-- Google Cloud Configuration -->
+                    <div class="service-content" id="google-config">
+                        <div class="status-card status-warning">
+                            <strong>GOOGLE CLOUD:</strong> WaveNet neural synthesis technology.
+                            <a href="https://cloud.google.com/text-to-speech" target="_blank" class="api-link">GET API KEY →</a>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>API Key</label>
+                            <input type="password" id="google-key" placeholder="Your Google Cloud API key">
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>WaveNet Voice</label>
+                            <select id="google-voice">
+                                <option value="en-US-Studio-O">US Studio Female (Premium)</option>
+                                <option value="en-US-Studio-M">US Studio Male (Premium)</option>
+                                <option value="en-US-Neural2-A">US Neural Female A</option>
+                                <option value="en-US-Neural2-D">US Neural Male D</option>
+                                <option value="en-GB-Neural2-A">UK Neural Female A</option>
+                                <option value="en-GB-Neural2-B">UK Neural Male B</option>
+                            </select>
+                        </div>
+                        
+                        <button class="test-btn" id="testGoogle">TEST VOICE</button>
+                    </div>
+
+                    <!-- Azure Configuration -->
+                    <div class="service-content" id="azure-config">
+                        <div class="status-card status-warning">
+                            <strong>AZURE SPEECH:</strong> Microsoft cognitive speech services.
+                            <a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech/" target="_blank" class="api-link">GET API KEY →</a>
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>API Key</label>
+                            <input type="password" id="azure-key" placeholder="Your Azure Speech key">
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>Region</label>
+                            <input type="text" id="azure-region" placeholder="e.g., eastus" value="eastus">
+                        </div>
+                        
+                        <div class="api-input-group">
+                            <label>Neural Voice</label>
+                            <select id="azure-voice">
+                                <option value="en-US-AriaNeural">Aria (US Female Premium)</option>
+                                <option value="en-US-JennyNeural">Jenny (US Female)</option>
+                                <option value="en-US-GuyNeural">Guy (US Male)</option>
+                                <option value="en-US-DavisNeural">Davis (US Male Premium)</option>
+                                <option value="en-GB-SoniaNeural">Sonia (UK Female)</option>
+                                <option value="en-GB-RyanNeural">Ryan (UK Male)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="test-btn" id="testAzure">TEST VOICE</button>
+                    </div>
+                </div>
+
+                <div class="status-card status-info">
+                    <strong>💎 PREMIUM FEATURES:</strong> Professional-grade voices • Ultra-low latency • Studio quality • Unlimited potential
+                </div>
+            </div>
+            
+            <!-- Script Input Section -->
+            <div class="script-section">
+                <div class="section-title">Your Script</div>
+                <textarea class="script-input" id="scriptInput" placeholder="Enter your dominating script here. Each line should be on a new line.
+
+Example:
+Welcome to Empire Domination, where excellence is the only option.
+We don't just compete. We dominate.
+Every field. Every time. No exceptions.
+Join us, and become unstoppable."></textarea>
+            </div>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <div class="control-group" id="voiceControl">
+                    <label>Voice Selection</label>
+                    <select id="voiceSelect">
+                        <option value="">System Default</option>
+                    </select>
+                </div>
+                
+                <div class="control-group" id="rateControl">
+                    <label>Speaking Rate</label>
+                    <input type="range" id="rateSlider" min="0.5" max="2" value="1" step="0.1">
+                    <div class="range-value" id="rateValue">1.0x</div>
+                </div>
+                
+                <div class="control-group" id="pitchControl">
+                    <label>Voice Pitch</label>
+                    <input type="range" id="pitchSlider" min="0.5" max="2" value="1" step="0.1">
+                    <div class="range-value" id="pitchValue">1.0x</div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Performance Pause (seconds)</label>
+                    <input type="number" id="pauseTime" min="1" max="10" value="3" step="0.5">
+                </div>
+
+                <div class="control-group" id="preloadControl" class="hidden">
+                    <label>Audio Preloading</label>
+                    <select id="preloadAudio">
+                        <option value="no">On-Demand (Save Bandwidth)</option>
+                        <option value="yes">Preload All (Smoother)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Current Line Display -->
+            <div class="current-line-display hidden" id="currentLineDisplay">
+                Ready to dominate...
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="button-group">
+                <button class="btn btn-primary glow-effect" id="playBtn">
+                    <span>▶</span> DOMINATE
+                </button>
+                <button class="btn btn-danger" id="pauseBtn" disabled>
+                    <span>⏸</span> PAUSE
+                </button>
+                <button class="btn btn-danger" id="stopBtn" disabled>
+                    <span>⏹</span> STOP
+                </button>
+                <button class="btn btn-success hidden" id="nextBtn">
+                    <span>⏭</span> NEXT LINE
+                </button>
+            </div>
+            
+            <!-- Status Display -->
+            <div class="status-display" id="status">
+                <span style="color: var(--primary-gold);">TELESPEAKER READY</span> • Select mode and begin your domination
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-label">DOMINATION PROGRESS</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>Master Your Delivery</h3>
+                <div id="ttsInstructions">
+                    <p><strong>Browser TTS Mode:</strong> Instant setup with system voices</p>
+                    <p>Works seamlessly in Chrome, Edge, and Safari</p>
+                    <p>Zero configuration required - start dominating immediately</p>
+                </div>
+                <div id="manualInstructions" class="hidden">
+                    <p><strong>Manual Timer Mode:</strong> Precision countdown system</p>
+                    <p>Visual line display with professional timing control</p>
+                    <p>Perfect for rehearsals and memorization</p>
+                </div>
+                <div id="apiInstructions" class="hidden">
+                    <p><strong>Premium API Mode:</strong> Professional-grade voice synthesis</p>
+                    <p><strong>ElevenLabs:</strong> Industry-leading AI voices</p>
+                    <p><strong>OpenAI:</strong> Neural synthesis technology</p>
+                    <p><strong>Google & Azure:</strong> Enterprise-grade solutions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-brand">EMPIRE DOMINATION</div>
+        <div class="footer-tagline">We don't just compete. We dominate every field we enter.</div>
+        <div style="margin-top: 10px; color: var(--text-muted);">
+            TeleSpeaker™ Professional • Version 2.0 • © 2025 Empire Domination
+        </div>
+    </div>
+
+</body>
+</html>
